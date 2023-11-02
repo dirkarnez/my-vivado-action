@@ -39,7 +39,10 @@ jobs:
         run: |
           cd installer && \
           7z x FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.zip.001 && \
-          rm -f FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.zip.*
+          rm -f FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.zip.*  && \
+          chmod +x FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.bin && \
+          ./FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.bin -- --keep --noexec --target . && \
+          ls
 
       - run: |
           cd installer && \
