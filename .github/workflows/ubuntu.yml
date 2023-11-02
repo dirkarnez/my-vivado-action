@@ -45,9 +45,9 @@ jobs:
           cd extracted && \
           ls
           
-      # - run: |
-      #     cd installer && \
-      #     docker build -t my-vivado . 
+      - run: |
+          cd installer && \
+          docker build -t my-vivado . 
 
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@master
