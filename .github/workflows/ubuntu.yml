@@ -16,21 +16,33 @@ jobs:
     #     sudo unzip transfersh-v1.0.0-ubuntu-latest.zip && \
     #     sudo ls -R
         
-    - uses: fastai/workflows/ssh@master
-      with:
-        ssh_key: ${{ secrets.SSH_KEY }}
-        key_file: id_ecdsa
-        
-    - name: Do cache
-      id: my-cache
-      uses: actions/cache@v3
-      with:
-        path: '/var/lib/docker/'
-        key: ${{ runner.os }}-my-cache-key
+      - uses: fastai/workflows/ssh@master
+        with:
+          ssh_key: ${{ secrets.SSH_KEY }}
+          key_file: id_ecdsa
+          
+      - name: Do cache
+        id: my-cache
+        uses: actions/cache@v3
+        with:
+          path: 'installer'
+          key: ${{ runner.os }}-my-cache-key
 
-    - name: This step is cached
-      if: steps.my-cache.outputs.cache-hit != 'true'
-      run: docker pull kkrizka/vivado:2021.1
-        
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@master
+      - name: This step is cached
+        if: steps.my-cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          path: 'installer'
+
+      - name: This step is cached
+        if: steps.my-cache.outputs.cache-hit != 'true'
+        run: |
+          cd installer && \
+          7z x FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.zip.001 && \
+          rm -f FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Lin64.zip.*
+
+      - run: |
+          docker build -t my-vivado . 
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@master
