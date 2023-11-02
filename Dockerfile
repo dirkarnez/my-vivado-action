@@ -1,5 +1,5 @@
 FROM ubuntu:latest
 
-COPY ./extracted/ /
+COPY ./extracted/ .
 
 CMD ["/bin/bash"]
