@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 
-COPY ./extracted/ .
+COPY ./extracted/ /extracted
+WORKDIR /extracted
 
 CMD ["/bin/bash"]
