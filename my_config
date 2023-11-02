@@ -1,13 +1,13 @@
-#### Vitis Unified Software Platform Install Configuration ####
-Edition=Vitis Unified Software Platform
+#### Vivado ML Standard Install Configuration ####
+Edition=Vivado ML Standard
 
-Product=Vitis
+Product=Vivado
 
-# Path where Xilinx software will be installed.
-Destination=/opt/Xilinx
+# Path where AMD FPGAs & Adaptive SoCs software will be installed.
+Destination=/tools/Xilinx
 
 # Choose the Products/Devices the you would like to install.
-Modules=Artix-7:1
+Modules=Artix-7:1,DocNav:1
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
 InstallOptions=
