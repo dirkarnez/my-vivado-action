@@ -1,6 +1,11 @@
-docker pull kkrizka/vivado:2021.1
+my-vivado-action
+================
 
-### 
-xsetup -b ConfigGen
+### Reference
+- `docker pull kkrizka/vivado:2021.1`
 
-./xsetup --agree XilinxEULA,3rdPartyEULA,WebTalkTerms --batch Install --config ~/.Xilinx/install_config.txt
+### Generate installation config (if needed)
+- `xsetup -b ConfigGen`
+
+### Install using installation config
+- `xsetup --agree XilinxEULA,3rdPartyEULA --batch Install --config /root/.Xilinx/install_config.txt`
